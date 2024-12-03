@@ -1,61 +1,149 @@
 <img alt="Drupal Logo" src="https://www.drupal.org/files/Wordmark_blue_RGB.png" height="60px">
 
-Drupal is an open source content management platform supporting a variety of
-websites ranging from personal weblogs to large community-driven websites. For
-more information, visit the Drupal website, [Drupal.org][Drupal.org], and join
-the [Drupal community][Drupal community].
+# **Alpha Tiles Drupal Site**
 
-## Contributing
+Alpha Tiles is a platform designed to enhance literacy by providing engaging, customizable games and resources for language learning. This Drupal site powers the Alpha Tiles ecosystem, enabling administrators to manage content, localization, and game configurations efficiently.
 
-Drupal is developed on [Drupal.org][Drupal.org], the home of the international
-Drupal community since 2001!
+Visit the official website: [alphatilesapps.org](https://alphatilesapps.org/index.html).
 
-[Drupal.org][Drupal.org] hosts Drupal's [GitLab repository][GitLab repository],
-its [issue queue][issue queue], and its [documentation][documentation]. Before
-you start working on code, be sure to search the [issue queue][issue queue] and
-create an issue if your aren't able to find an existing issue.
+---
 
-Every issue on Drupal.org automatically creates a new community-accessible fork
-that you can contribute to. Learn more about the code contribution process on
-the [Issue forks & merge requests page][issue forks].
+## **Getting Started**
 
-## Usage
+Follow these steps to set up the Alpha Tiles Drupal site on your local development environment.
 
-For a brief introduction, see [USAGE.txt](/core/USAGE.txt). You can also find
-guides, API references, and more by visiting Drupal's [documentation
-page][documentation].
+### **Prerequisites**
 
-You can quickly extend Drupal's core feature set by installing any of its
-[thousands of free and open source modules][modules]. With Drupal and its
-module ecosystem, you can often build most or all of what your project needs
-before writing a single line of code.
+Ensure you have the following installed:
+- PHP 8.1 or higher
+- Composer
+- A web server like Apache or Nginx
+- A database server like MySQL or MariaDB
+- Drush (optional but recommended for command-line Drupal management)
 
-## Changelog
+---
 
-Drupal keeps detailed [change records][changelog]. You can search Drupal's
-changes for a record of every notable breaking change and new feature since
-2011.
+### **Installation Steps**
 
-## Security
+#### **1. Clone the Repository**
+```bash
+git clone <repository-url> alphatiles-drupal
+cd alphatiles-drupal
+```
 
-For a list of security announcements, see the [Security advisories
-page][Security advisories] (available as [an RSS feed][security RSS]). This
-page also describes how to subscribe to these announcements via email.
+#### **2. Install Dependencies**
+Run Composer to install the necessary Drupal core files, modules, and libraries.
+```bash
+composer install
+```
 
-For information about the Drupal security process, or to find out how to report
-a potential security issue to the Drupal security team, see the [Security team
-page][security team].
+#### **3. Create Configuration Files**
+Set up the necessary configuration files:
+1. **`settings.php`**:
+   - Copy the default settings file.
+   ```bash
+   cp web/sites/default/default.settings.php web/sites/default/settings.php
+   ```
+   - Update the database connection settings in `settings.php`.
 
-## Need a helping hand?
+2. **`services.yml`**:
+   - Copy the default services file.
+   ```bash
+   cp web/sites/default/default.services.yml web/sites/default/services.yml
+   ```
 
-Visit the [Support page][support] or browse [over a thousand Drupal
-providers][service providers] offering design, strategy, development, and
-hosting services.
+3. **Local Development Configuration**:
+   - Create a `settings.local.php` file for your local environment.
+   ```bash
+   cp web/sites/default/example.settings.local.php web/sites/default/settings.local.php
+   ```
+   - Enable the inclusion of `settings.local.php` in `settings.php`:
+     ```php
+     if (file_exists(__DIR__ . '/settings.local.php')) {
+         include __DIR__ . '/settings.local.php';
+     }
+     ```
 
-## Legal matters
+4. **`files` Directory**:
+   - Ensure the `web/sites/default/files` directory exists and is writable.
+   ```bash
+   mkdir -p web/sites/default/files
+   chmod -R 755 web/sites/default/files
+   ```
 
-Know your rights when using Drupal by reading Drupal core's
-[license](/core/LICENSE.txt).
+#### **4. Set Up the Database**
+- Create a database for the project (e.g., `alphatiles`).
+- Import the database dump if provided:
+  ```bash
+  mysql -u <username> -p <database_name> < dump.sql
+  ```
+
+#### **5. Run Drupal Installation**
+Install the site using Drush:
+```bash
+drush site:install --db-url=mysql://<username>:<password>@localhost/<database_name> --site-name="Alpha Tiles"
+```
+Alternatively, use the web-based installer by navigating to `http://localhost` in your browser.
+
+---
+
+### **Development Workflow**
+
+#### **Extending Functionality**
+- Use Composer to add modules and themes:
+  ```bash
+  composer require drupal/<module_name>
+  ```
+
+#### **Export Configuration**
+- Export changes to configuration files to version control:
+  ```bash
+  drush config:export
+  ```
+
+#### **Import Configuration**
+- Import configuration from version control:
+  ```bash
+  drush config:import
+  ```
+
+---
+
+## **Project Structure**
+
+```
+alphatiles-drupal/
+├── composer.json      # Composer dependencies
+├── composer.lock      # Lock file for dependency versions
+├── drush/             # Drush configuration and files
+├── web/
+│   ├── core/          # Drupal core files
+│   ├── modules/       # Custom and contributed modules
+│   ├── sites/         # Site-specific configuration
+│   ├── themes/        # Custom and contributed themes
+│   ├── index.php      # Drupal entry point
+├── vendor/            # Composer-managed dependencies
+```
+
+---
+
+## **Changelog**
+
+Track all significant changes to the project in `CHANGELOG.md`.
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Please create a new branch for your feature or bug fix and submit a pull request for review. Ensure all configurations are exported and committed.
+
+---
+
+## **Support**
+
+For issues or questions, contact the Alpha Tiles team or visit the official website: [alphatilesapps.org](https://alphatilesapps.org/index.html).
+
+
 
 Learn about the [Drupal trademark and logo policy here][trademark].
 
