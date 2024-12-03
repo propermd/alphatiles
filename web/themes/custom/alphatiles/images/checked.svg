@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #000;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="checkbox-outline" transform="translate(-64.844 -64.395)">
+    <path id="Path_1" data-name="Path 1" class="cls-1" d="M173.383,176l-9.368,11.153L160,182.692" transform="translate(-89.23 -104.115)"/>
+    <g id="Rectangle_92" data-name="Rectangle 92" class="cls-1" transform="translate(64.844 64.395)">
+      <rect class="cls-2" width="26" height="26" rx="13"/>
+      <rect class="cls-3" x="0.5" y="0.5" width="25" height="25" rx="12.5"/>
+    </g>
+  </g>
+</svg>

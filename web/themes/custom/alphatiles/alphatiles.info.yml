@@ -1,0 +1,31 @@
+name: 'Alpha Tiles'
+type: theme
+description: 'Alpha Tiles subtheme based on Bootstrap 5 theme.'
+core_version_requirement: '^10.1 || ^11.0'
+'base theme': bootstrap5
+libraries:
+  - alphatiles/global-styling
+ckeditor_stylesheets:
+  - css/style.css
+ckeditor5-stylesheets:
+  - css/ck5style.css
+regions:
+  header: Header
+  nav_branding: 'Navigation branding region'
+  nav_main: 'Main navigation region'
+  nav_additional: 'Additional navigation region (eg search form, social icons, etc)'
+  breadcrumb: Breadcrumbs
+  top_bar: 'Tob Bar'
+  content: 'Main content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  frontvideo: 'Front Video'
+  frontgame: 'Front Games'
+  contentbtm: 'Content Bottom'
+  footer: 'Footer Center' 
+  footerleft: 'Footer Left' 
+  footerright: 'Footer Right'
+  footerbase: 'Footer Base'
+  disabled: 'Disabled'
+libraries-override:
+  bootstrap5/global-styling: false

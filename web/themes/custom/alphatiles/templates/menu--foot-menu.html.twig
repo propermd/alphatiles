@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme override to display a simple menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - title: The menu link title.
+ *   - url: The menu link URL, instance of \Drupal\Core\Url
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{{ menus.build_menu(items, attributes) }}
+
+{% macro build_menu(items, attributes) %}
+  {% if items %}
+    <ul{{ attributes.addClass('navbar-nav justify-content-end flex-nowrap') }}>
+      {% for item in items %}
+        {{ _self.add_link(item) }}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% macro add_link(item) %}
+  {%
+    set link_classes = [
+      'nav-link',
+      item.in_active_trail ? 'active' : ''
+    ]
+  %}
+  <li class="nav-item">
+    {{ link(item.title, item.url, { 'class': link_classes }) }}
+  </li>
+{% endmacro %}
