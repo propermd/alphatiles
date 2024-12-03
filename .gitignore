@@ -1,0 +1,30 @@
+# Core files managed by Composer
+/web/core
+/web/modules/contrib
+/web/themes/contrib
+/vendor
+
+# Environment-specific files
+/sites/*/settings*.php
+/sites/*/services*.yml
+/sites/*/files
+
+# Temporary files
+*.log
+*.cache
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Composer dependencies and lock files
+composer.lock
+composer.phar
+
+# Node.js dependencies if used
+node_modules/
+
+# IDE and OS specific files
+.idea/
+.vscode/
